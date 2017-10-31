@@ -1,8 +1,8 @@
 {
-  "name": "angular-vs-repeat",
+  "name": "radiumcz-angular-vs-repeat",
   "version": "1.1.7",
   "description": "Virtual Scroll for AngularJS ngRepeat directive",
-  "homepage": "http://kamilkp.github.io/angular-vs-repeat",
+  "homepage": "http://github.com/radiumcz/angular-vs-repeat",
   "author": {
     "name": "Kamil Pekala",
     "email": "kamilkp@gmail.com",

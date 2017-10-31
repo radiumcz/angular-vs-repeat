@@ -268,6 +268,12 @@
                             refresh();
                         });
 
+                        function applySafe() {
+                            if ($scope.$root && !$scope.$root.$$phase) {
+                                $scope.$apply();
+                            }
+                        }
+
                         function refresh() {
                             if (!originalCollection || originalCollection.length < 1) {
                                 $scope[collectionName] = [];
@@ -341,9 +347,7 @@
                                         if (gotSomething) {
                                             reinitialize();
                                             autoSize = false;
-                                            if ($scope.$root && !$scope.$root.$$phase) {
-                                                $scope.$apply();
-                                            }
+                                            applySafe();
                                         }
                                     }
                                     else {
@@ -387,12 +391,10 @@
                             if (typeof $attrs.vsAutoresize !== 'undefined') {
                                 autoSize = true;
                                 setAutoSize();
-                                if ($scope.$root && !$scope.$root.$$phase) {
-                                    $scope.$apply();
-                                }
+                                applySafe();
                             }
                             if (updateInnerCollection()) {
-                                $scope.$apply();
+                                applySafe();
                             }
                         }
 
@@ -460,7 +462,7 @@
                             if (ch !== _prevClientSize) {
                                 reinitialize();
                                 if ($scope.$root && !$scope.$root.$$phase) {
-                                    $scope.$apply();
+                                    applySafe();
                                 }
                             }
                             _prevClientSize = ch;
